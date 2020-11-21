@@ -2,6 +2,16 @@ Rainbow Parentheses Improved
 ===
 >	help you read complex code by showing diff level of parentheses in diff color !!
 
+## Fork note:
+
+This is a fork of https://github.com/luochen1990/rainbow, and purely exists to work for my purpose.
+
+I couldn't for the life of me enable the previous plugin where I wanted it to activate, so I've so far added `g:rainbow_blacklist` and `g:rainbow_list`. `g_rainbow_list` is equivalent to only activating on certain filetypes, where as `g_rainbow_blacklist` activates on all filetypes except the ones in the list. Fairly standard stuff. Additionally, this fork flattens the file structure, because I can, basically. Done purely for personal preferences. This change also makes merging into luochen1990/rainbow unlikely, as it's breaking due to renaming and whatnot.
+
+Might make additional changes in the future, at least when I start understanding the internals of the code.
+
+This fork requires Vim 8.1.1310 or newer. All bets are off for Neovim, because I hate dealing with multiple standards.
+
 Description [(这里有中文版)](https://github.com/luochen1990/rainbow/blob/master/README_zh.md)
 ---------------------------------------------------------------------------------------------------
 
