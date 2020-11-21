@@ -58,7 +58,7 @@ fun s:synGroupID(prefix, group, lv)
     return a:prefix.a:group.'_lv'.a:lv
 endfun
 
-fun rainbow#syn(config)
+fun rainbow_main#syn(config)
     let conf = a:config
     let prefix = conf.syn_name_prefix
     let cycle = conf.cycle
@@ -92,7 +92,7 @@ fun rainbow#syn(config)
     if has_key(conf, 'after') | for cmd in conf.after | exe cmd | endfor | endif
 endfun
 
-fun rainbow#syn_clear(config)
+fun rainbow_main#syn_clear(config)
     let conf = a:config
     let prefix = conf.syn_name_prefix
 
@@ -105,7 +105,7 @@ fun rainbow#syn_clear(config)
     endfor
 endfun
 
-fun rainbow#hi(config)
+fun rainbow_main#hi(config)
     let conf = a:config
     let prefix = conf.syn_name_prefix
 
@@ -123,7 +123,7 @@ fun rainbow#hi(config)
     endfor
 endfun
 
-fun rainbow#hi_clear(config)
+fun rainbow_main#hi_clear(config)
     let conf = a:config
     let prefix = conf.syn_name_prefix
 
@@ -263,8 +263,8 @@ fun rainbow_main#load(auto = 0)
 
     let b:rainbow_confs = rainbow_main#gen_configs(&filetype)
     for conf in b:rainbow_confs
-        call rainbow#syn(conf)
-        call rainbow#hi(conf)
+        call rainbow_main#syn(conf)
+        call rainbow_main#hi(conf)
     endfor
 endfun
 
@@ -274,8 +274,8 @@ fun rainbow_main#clear(auto = 0)
     endif
     if !exists('b:rainbow_confs') | return | endif
     for conf in b:rainbow_confs
-        call rainbow#hi_clear(conf)
-        call rainbow#syn_clear(conf)
+        call rainbow_main#hi_clear(conf)
+        call rainbow_main#syn_clear(conf)
     endfor
     unlet b:rainbow_confs
 endfun
@@ -306,6 +306,6 @@ command! RainbowToggleOff call rainbow_main#clear()
 
 if (exists('g:rainbow_active') && g:rainbow_active)
     let s:rainbowList = s:getRainbowList()
-    exec 'auto syntax ' . s.rainbowList() . ' call rainbow_main#load(1)'
-    exec 'auto colorscheme ' . s:rainbowList() . ' call rainbow_main#load(1)'
+    exec 'auto syntax ' . s:rainbowList . ' call rainbow_main#load(1)'
+    exec 'auto colorscheme ' . s:rainbowList . ' call rainbow_main#load(1)'
 endif
